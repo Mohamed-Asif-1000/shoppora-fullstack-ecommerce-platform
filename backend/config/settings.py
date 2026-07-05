@@ -1,5 +1,6 @@
 
 
+import dj_database_url
 from pathlib import Path
 from decouple import config
 from datetime import timedelta
@@ -18,7 +19,6 @@ DEBUG = config("DEBUG", default=False, cast=bool)
 
 ALLOWED_HOSTS = config(
     "ALLOWED_HOSTS",
-    default="127.0.0.1,localhost",
     cast=lambda v: [s.strip() for s in v.split(",")]
 )
 
@@ -76,15 +76,11 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('DB_NAME'),
-        'USER': config('DB_USER'),
-        'PASSWORD': config('DB_PASSWORD'),
-        'HOST': config('DB_HOST'),
-        'PORT': config('DB_PORT'),
-    }
+    "default": dj_database_url.config(
+        default=f"postgresql://{config('DB_USER')}:{config('DB_PASSWORD')}@{config('DB_HOST')}:{config('DB_PORT')}/{config('DB_NAME')}"
+    )
 }
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
@@ -124,10 +120,10 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:5173',
-    'http://127.0.0.1:5173',
-]
+CORS_ALLOWED_ORIGINS = config(
+    "CORS_ALLOWED_ORIGINS",
+    cast=lambda v: [s.strip() for s in v.split(",")]
+)
 
 CORS_ALLOW_CREDENTIALS = True
 
