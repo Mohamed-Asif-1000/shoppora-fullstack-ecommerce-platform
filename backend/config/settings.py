@@ -22,6 +22,7 @@ ALLOWED_HOSTS = config(
     cast=lambda v: [s.strip() for s in v.split(",")]
 )
 
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Application definition
 
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -120,6 +122,9 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
+STORAGES = {"staticfiles": {
+    "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"}}
+
 CORS_ALLOWED_ORIGINS = config(
     "CORS_ALLOWED_ORIGINS",
     cast=lambda v: [s.strip() for s in v.split(",")]
@@ -127,7 +132,8 @@ CORS_ALLOWED_ORIGINS = config(
 
 CORS_ALLOW_CREDENTIALS = True
 
-CSRF_TRUSTED_ORIGINS = [ 'http://localhost:5173', 'http://127.0.0.1:5173', 'https://considerate-nature-production-d83c.up.railway.app', ]
+CSRF_TRUSTED_ORIGINS = ['http://localhost:5173', 'http://127.0.0.1:5173',
+                        'https://considerate-nature-production-d83c.up.railway.app', ]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
