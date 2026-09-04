@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'cloudinary',
+    'cloudinary_storage',
     'django.contrib.staticfiles',
 ]
 
@@ -122,8 +124,11 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
-STORAGES = {"staticfiles": {
-    "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"}}
+CLOUDINARY_STORAGE = {'CLOUDINARY_URL': config('CLOUDINARY_URL')}
+
+STORAGES = {"default": {"BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage"},
+            "staticfiles": {"BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"}, }
+
 
 CORS_ALLOWED_ORIGINS = config(
     "CORS_ALLOWED_ORIGINS",
