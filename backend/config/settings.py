@@ -133,7 +133,9 @@ CORS_ALLOWED_ORIGINS = config(
 CORS_ALLOW_CREDENTIALS = True
 
 CSRF_TRUSTED_ORIGINS = ['http://localhost:5173', 'http://127.0.0.1:5173',
-                        'https://considerate-nature-production-d83c.up.railway.app', ]
+                        'https://considerate-nature-production-d83c.up.railway.app',
+                        'https://shoppora-marketplacevercelapp.vercel.app', ]
+
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
