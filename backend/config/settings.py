@@ -128,6 +128,8 @@ CLOUDINARY_STORAGE = {'CLOUDINARY_URL': config('CLOUDINARY_URL')}
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+WHITENOISE_MANIFEST_STRICT = False
+
 STORAGES = {"default": {"BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage"},
             "staticfiles": {"BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"}, }
 
