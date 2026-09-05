@@ -126,12 +126,12 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 
 CLOUDINARY_STORAGE = {'CLOUDINARY_URL': config('CLOUDINARY_URL')}
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 WHITENOISE_MANIFEST_STRICT = False
 
 STORAGES = {"default": {"BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage"},
-            "staticfiles": {"BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"}, }
+            "staticfiles": {"BACKEND": "whitenoise.storage.CompressedStaticFilesStorage"}, }
 
 
 CORS_ALLOWED_ORIGINS = config(
