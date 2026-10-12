@@ -28,6 +28,19 @@ type Props = {
   fetchProducts: () => void;
 };
 
+const uploadToCloudinary = async (file: File): Promise<string> => {
+  const form = new FormData();
+  form.append("file", file);
+  form.append("upload_preset", import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET);
+  const res = await fetch(
+    `https://api.cloudinary.com/v1_1/${import.meta.env.VITE_CLOUDINARY_CLOUD_NAME}/image/upload`,
+    { method: "POST", body: form },
+  );
+  const data = await res.json();
+  if (!res.ok) throw new Error(data?.error?.message || "Image upload failed");
+  return data.secure_url;
+};
+
 export default function SellerProducts({ products, fetchProducts }: Props) {
   const [showModal, setShowModal] = useState(false);
 
@@ -105,7 +118,8 @@ export default function SellerProducts({ products, fetchProducts }: Props) {
       data.append("seller", sellerId);
 
       if (image) {
-        data.append("image", image);
+        const imageUrl = await uploadToCloudinary(image);
+        data.append("image", imageUrl);
       }
 
       let response;

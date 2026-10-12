@@ -201,7 +201,7 @@ export default function SellerOrders() {
                         Your earnings from this order
                       </p>
                       <p className="text-lg font-bold text-green-400">
-                        ₹₹{getSellerEarnings(order)}
+                        ₹{getSellerEarnings(order)}
                       </p>
                     </div>
                   </div>

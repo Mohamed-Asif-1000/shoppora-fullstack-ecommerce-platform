@@ -8,10 +8,11 @@ class CartSerializer(
 
     title = serializers.CharField(
         source='product.title',
+
         read_only=True,
     )
 
-    image = serializers.ImageField(
+    image = serializers.CharField(
         source='product.image',
         read_only=True,
     )
