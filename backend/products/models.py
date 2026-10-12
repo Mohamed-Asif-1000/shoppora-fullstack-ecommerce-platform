@@ -12,7 +12,7 @@ class Product(models.Model):
 
     title = models.CharField(max_length=200)
 
-    image = models.ImageField(upload_to='products/')
+    image = models.URLField(max_length=500, blank=True, null=True)
 
     price = models.IntegerField()
 

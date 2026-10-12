@@ -1,4 +1,5 @@
 import type { Wishlist } from "../../types";
+import { getImageUrl } from "../../utils/getImageUrl";
 
 type Props = {
   wishlist: Wishlist[];
@@ -22,7 +23,7 @@ export default function CustomerWishlist({
               className="overflow-hidden rounded-lg border border-slate-600 bg-slate-700/30"
             >
               <img
-                src={`${import.meta.env.VITE_API_URL}${item.product.image}`}
+                src={getImageUrl(item.product.image)}
                 className="h-40 w-full object-cover"
               />
               <div className="p-4">

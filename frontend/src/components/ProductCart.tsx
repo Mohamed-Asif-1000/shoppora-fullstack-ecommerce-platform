@@ -4,6 +4,7 @@ import { getProducts, addCart, addWishlist } from "../services/api";
 import { motion } from "framer-motion";
 import { useCart } from "../context/CartContext";
 import type { SellerProduct } from "../types";
+import { getImageUrl } from "../utils/getImageUrl";
 
 export default function ProductCart(): React.JSX.Element {
   const [products, setProducts] = useState<SellerProduct[]>([]);
@@ -97,7 +98,7 @@ export default function ProductCart(): React.JSX.Element {
                     {/* IMAGE */}
                     <div className="group relative h-64 overflow-hidden">
                       <img
-                        src={`${import.meta.env.VITE_API_URL}${p.image}`}
+                        src={getImageUrl(p.image)}
                         alt={p.title}
                         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110 group-hover:blur-[1px]"
                       />

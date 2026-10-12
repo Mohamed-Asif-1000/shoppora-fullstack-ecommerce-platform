@@ -3,6 +3,7 @@ import { ShoppingCart } from "lucide-react";
 import { getCart, removeCart } from "../services/api";
 import { useNavigate } from "react-router-dom";
 import { useCallback } from "react";
+import { getImageUrl } from "../utils/getImageUrl";
 
 export default function Cart() {
   type CartItem = {
@@ -76,7 +77,7 @@ export default function Cart() {
                   className="flex gap-4 rounded-xl border border-slate-700 bg-slate-800 p-4"
                 >
                   <img
-                    src={`${import.meta.env.VITE_API_URL}${item.image}`}
+                    src={getImageUrl(item.image)}
                     className="h-24 w-24 rounded-md object-cover"
                   />
 

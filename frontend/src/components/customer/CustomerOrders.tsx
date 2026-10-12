@@ -1,4 +1,5 @@
 import type { Order } from "../../types";
+import { getImageUrl } from "../../utils/getImageUrl";
 
 type Props = {
   orders: Order[];
@@ -110,7 +111,7 @@ export default function CustomerOrders({ orders }: Props): React.JSX.Element {
                 {order.items?.map((item, index) => (
                   <div key={index} className="flex items-center gap-4">
                     <img
-                      src={`${import.meta.env.VITE_API_URL}${item.image}`}
+                      src={getImageUrl(item.image)}
                       className="h-20 w-20 rounded object-cover"
                     />
                     <div>

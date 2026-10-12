@@ -3,6 +3,7 @@ import { Heart, Trash2 } from "lucide-react";
 import { useCart } from "../context/CartContext";
 import { useNavigate } from "react-router-dom";
 import { getWishlist, removeWishlist, addCart } from "../services/api";
+import { getImageUrl } from "../utils/getImageUrl";
 
 export default function Wishlist(): React.JSX.Element {
   type WishlistItem = {
@@ -55,7 +56,7 @@ export default function Wishlist(): React.JSX.Element {
         {wishlist.map((item) => (
           <div key={item.id} className=" bg-slate-900 p-4 rounded-2xl">
             <img
-              src={`${import.meta.env.VITE_API_URL}${item.product.image}`}
+              src={getImageUrl(item.product.image)}
               className="h-56 w-full object-cover"
             />
 

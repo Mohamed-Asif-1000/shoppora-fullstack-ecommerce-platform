@@ -4,6 +4,7 @@ import { Search, ArrowLeft } from "lucide-react";
 import { useEffect } from "react";
 import { useCart } from "../context/CartContext";
 import { getProducts, addCart } from "../services/api";
+import { getImageUrl } from "../utils/getImageUrl";
 
 export default function SearchResults(): React.JSX.Element {
   const [searchParams] = useSearchParams();
@@ -115,7 +116,7 @@ export default function SearchResults(): React.JSX.Element {
               >
                 <div className="relative flex h-64 items-center justify-center bg-slate-100">
                   <img
-                    src={`${import.meta.env.VITE_API_URL}${product.image}`}
+                    src={getImageUrl(product.image)}
                     alt={product.title}
                     className="h-full w-full object-cover"
                     onError={(e) => {

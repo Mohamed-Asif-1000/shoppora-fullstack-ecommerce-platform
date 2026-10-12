@@ -5,6 +5,7 @@ import {
   assignDeliveryAgent,
   getDeliveryAgents,
 } from "../../services/api";
+import { getImageUrl } from "../../utils/getImageUrl";
 
 interface GroupedOrder {
   order_id: number;
@@ -236,7 +237,7 @@ export default function SellerOrders() {
                       >
                         {/* PRODUCT IMAGE */}
                         <img
-                          src={`${import.meta.env.VITE_API_URL}${item.product_image}`}
+                          src={getImageUrl(item.product_image)}
                           alt={item.product_title}
                           className="h-20 w-20 rounded-lg object-cover"
                         />

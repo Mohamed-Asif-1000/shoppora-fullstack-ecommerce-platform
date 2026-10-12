@@ -1,4 +1,5 @@
 import type { DeliveryOrder } from "./DeliveryDashboard";
+import { getImageUrl } from "../../utils/getImageUrl";
 
 type Props = {
   activeOrders: DeliveryOrder[];
@@ -90,7 +91,7 @@ export default function DeliveryActiveTab({
                     >
                       <div className="flex items-center gap-3">
                         <img
-                          src={`${import.meta.env.VITE_API_URL}${item.product_image}`}
+                          src={getImageUrl(item.product_image)}
                           alt={item.product_title}
                           className="h-20 w-20 rounded-lg object-cover"
                         />
@@ -159,7 +160,7 @@ export default function DeliveryActiveTab({
                         className="flex flex-wrap items-center gap-3 rounded-lg border border-slate-700 bg-slate-900/40 p-3"
                       >
                         <img
-                          src={`${import.meta.env.VITE_API_URL}${item.product_image}`}
+                          src={getImageUrl(item.product_image)}
                           alt={item.product_title}
                           className="h-16 w-16 rounded-lg object-cover"
                         />

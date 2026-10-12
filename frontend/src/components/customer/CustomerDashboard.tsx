@@ -13,6 +13,7 @@ import {
   removeAddress,
 } from "../../services/api";
 import type { Order, Wishlist, Address } from "../../types";
+import { getImageUrl } from "../../utils/getImageUrl";
 
 export default function CustomerDashboard(): React.JSX.Element {
   const [searchParams] = useSearchParams();
@@ -433,7 +434,7 @@ export default function CustomerDashboard(): React.JSX.Element {
                                 className="flex items-center gap-4"
                               >
                                 <img
-                                  src={`${import.meta.env.VITE_API_URL}${item.image}`}
+                                  src={getImageUrl(item.image)}
                                   className="h-20 w-20 rounded object-cover"
                                 />
 
@@ -476,7 +477,7 @@ export default function CustomerDashboard(): React.JSX.Element {
                         className="overflow-hidden rounded-lg border border-slate-600 bg-slate-700/30"
                       >
                         <img
-                          src={`${import.meta.env.VITE_API_URL}${item.product.image}`}
+                          src={getImageUrl(item.product.image)}
                           className="h-40 w-full object-cover"
                         />
 

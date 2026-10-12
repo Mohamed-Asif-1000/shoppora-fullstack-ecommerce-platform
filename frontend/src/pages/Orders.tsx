@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Package } from "lucide-react";
 import { getOrders } from "../services/api";
 import type { CustomerOrder, OrderItem } from "../types";
+import { getImageUrl } from "../utils/getImageUrl";
 
 export default function Orders() {
   const [orders, setOrders] = useState<CustomerOrder[]>([]);
@@ -140,7 +141,7 @@ export default function Orders() {
                       className="flex gap-4 rounded-xl bg-slate-800 p-4"
                     >
                       <img
-                        src={`${import.meta.env.VITE_API_URL}${product.image}`}
+                        src={getImageUrl(product.image)}
                         alt={product.title}
                         className="h-24 w-24 rounded-lg object-cover"
                       />

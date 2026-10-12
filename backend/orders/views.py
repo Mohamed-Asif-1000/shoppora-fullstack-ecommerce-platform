@@ -72,6 +72,7 @@ def order_list(request):
         items = []
 
         for item in order.items.all():
+            image_url = item.product.image.url if item.product and item.product.image else ""
 
             items.append({
 
@@ -79,7 +80,7 @@ def order_list(request):
                 item.product.title,
 
                 'image':
-                item.product.image.url,
+                image_url,
 
                 'quantity':
                 item.quantity,
@@ -167,9 +168,10 @@ def seller_orders(request):
                 'commission_amount': round(commission_amount, 2),
             }
 
+        image_url = item.product.image.url if item.product and item.product.image else ""
         orders_dict[order_key]['items'].append({
             'product_title': item.product.title,
-            'product_image': item.product.image.url,
+            'product_image': image_url,
             'quantity': item.quantity,
             'price': item.price,
             'item_total': item.quantity * item.price
@@ -230,9 +232,10 @@ def delivery_orders(request):
                 'commission_amount': round(commission_amount, 2),
             }
 
+        image_url = item.product.image.url if item.product and item.product.image else ""
         orders_dict[order_key]['items'].append({
             'product_title': item.product.title,
-            'product_image': item.product.image.url,
+            'product_image': image_url,
             'quantity': item.quantity,
             'price': item.price,
             'item_total': item.quantity * item.price

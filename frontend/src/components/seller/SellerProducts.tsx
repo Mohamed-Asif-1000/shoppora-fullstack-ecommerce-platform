@@ -4,6 +4,7 @@ import {
   addSellerProduct,
   updateSellerProduct,
 } from "../../services/api";
+import { getImageUrl } from "../../utils/getImageUrl";
 
 import { useState } from "react";
 
@@ -93,13 +94,13 @@ export default function SellerProducts({ products, fetchProducts }: Props) {
 
       data.append("title", formData.title);
       data.append("description", formData.description);
-      data.append("price", formData.price);
-      data.append("stock", formData.stock);
+      data.append("price", formData.price || "0");
+      data.append("stock", formData.stock || "0");
       data.append("badge", formData.badge);
       data.append("category", formData.category);
       data.append("badgeColor", formData.badgeColor);
-      data.append("rating", formData.rating);
-      data.append("buyers", formData.buyers);
+      data.append("rating", formData.rating || "0");
+      data.append("buyers", formData.buyers || "0");
 
       data.append("seller", sellerId);
 
@@ -162,7 +163,7 @@ export default function SellerProducts({ products, fetchProducts }: Props) {
               <div className="mb-4 h-48 overflow-hidden rounded-lg bg-slate-700">
                 {product.image ? (
                   <img
-                    src={`${import.meta.env.VITE_API_URL}${product.image}`}
+                    src={getImageUrl(product.image)}
                     alt={product.title}
                     className="h-full w-full object-cover"
                   />

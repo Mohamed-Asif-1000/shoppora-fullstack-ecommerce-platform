@@ -7,15 +7,18 @@ class CartSerializer(
 ):
 
     title = serializers.CharField(
-        source='product.title'
+        source='product.title',
+        read_only=True,
     )
 
     image = serializers.ImageField(
-        source='product.image'
+        source='product.image',
+        read_only=True,
     )
 
     price = serializers.IntegerField(
-        source='product.price'
+        source='product.price',
+        read_only=True,
     )
 
     class Meta:
