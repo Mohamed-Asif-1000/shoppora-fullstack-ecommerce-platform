@@ -2,7 +2,7 @@
 
 ![React](https://img.shields.io/badge/React-19-blue?logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)
-![Django](https://img.shields.io/badge/Django-5-darkgreen?logo=django)
+![Django](https://img.shields.io/badge/Django-6-darkgreen?logo=django)
 ![Django REST Framework](https://img.shields.io/badge/DRF-API-red)
 ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4-38bdf8?logo=tailwindcss)
 ![JWT](https://img.shields.io/badge/JWT-Authentication-orange)
@@ -558,7 +558,8 @@ npm run dev
 
 ## 🌍 Live Demo
 
-🔗 Frontend:
+- 🔗 **Frontend (Vercel):** https://shoppora-marketplacevercelapp.vercel.app
+- 🔗 **Backend API (Railway):** https://considerate-nature-production-d83c.up.railway.app/api/products/
 
 > Backend deployment is planned.
 
